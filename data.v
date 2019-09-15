@@ -1,4 +1,4 @@
-module data
+module ldata
 
 struct Data {
     pub:
