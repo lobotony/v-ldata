@@ -1,7 +1,7 @@
 module ldata
 
 struct Data {
-    pub:
+    pub mut:
     data byteptr
     size u64
 }
@@ -31,4 +31,10 @@ pub fn init_with_file(path string) Data {
     result := Data{data, u64(fsize)}
     println('$path [ $fsize bytes ]')
 	return result
+}
+
+pub fn (self mut Data) deinit() {
+	free(self.data)
+	self.data = 0
+	self.size = 0
 }
