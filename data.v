@@ -33,8 +33,6 @@ pub fn init_with_file(path string) Data {
 	return result
 }
 
-pub fn (self mut Data) deinit() {
+pub fn (self Data) deinit() {
 	free(self.data)
-	self.data = 0
-	self.size = 0
 }
