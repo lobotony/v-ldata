@@ -1,6 +1,6 @@
 module ldata
 
-import os
+#include <stdio.h>
 
 struct Data {
     pub mut:
