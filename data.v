@@ -1,5 +1,7 @@
 module ldata
 
+import os
+
 struct Data {
     pub mut:
     data byteptr
