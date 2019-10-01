@@ -12,15 +12,18 @@ fn (self Data) str() string {
     return 'Data{${self.data.hex()} ${self.size}}'
 }
 
-pub fn init_with_file(path string) Data { 
-	mode := 'rb'
-	mut fp := &C.FILE{}
+fn _open(path string, mode string) *C.FILE {
 	$if windows {
-		fp = C._wfopen(path.to_wide(), mode.to_wide())
+		return C._wfopen(path.to_wide(), mode.to_wide())
 	} $else {
 		cpath := path.str
-		fp = C.fopen(cpath, mode.str) 
-	}
+		return C.fopen(cpath, mode.str) 
+	}	
+}
+
+pub fn init_with_file(path string) Data { 
+	mode := 'rb'
+	mut fp := _open(path, mode)
 	if isnil(fp) {
 		panic('failed to open file $path')
 	}
