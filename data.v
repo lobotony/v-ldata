@@ -21,7 +21,7 @@ fn open(path string, mode string) *C.FILE {
 	}	
 }
 
-pub fn init_with_file(path string) Data { 
+pub fn new_from_file(path string) Data { 
 	mode := 'rb'
 	mut fp := open(path, mode)
 	if isnil(fp) {
