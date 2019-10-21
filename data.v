@@ -39,5 +39,7 @@ pub fn new_from_file(path string) Data {
 }
 
 pub fn (self Data) deinit() {
-	free(self.data)
+	unsafe {
+		free(self.data)
+	}
 }
