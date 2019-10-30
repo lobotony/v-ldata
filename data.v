@@ -2,7 +2,7 @@ module ldata
 
 #include <stdio.h>
 
-struct Data {
+pub struct Data {
     pub mut:
     data byteptr
     size u64
